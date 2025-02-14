@@ -186,13 +186,22 @@ heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
  
         // Function to make the "No" button move away
         const noButton = document.getElementById("noBtn");
- 
-        noButton.addEventListener("mouseover", function () {
+
+noButton.addEventListener("mouseover", function () {
+    if (!noButton.classList.contains("moving")) {
+        noButton.classList.add("moving");
+
+        setTimeout(() => {
             const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
             const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-noButton.style.left = `${x}px`;
-noButton.style.top = `${y}px`;
-        });
+            noButton.style.position = "absolute";  
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+
+            noButton.classList.remove("moving");
+        }, 100); // Small delay to prevent freezing
+    }
+});
  
         // Ensure music starts playing (for mobile browsers)
         document.addEventListener("click", function() {
