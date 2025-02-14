@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+  			background: linear-gradient(120deg, #ff758c, #ff7eb3);
+            url('your-image.jpg') no-repeat center center/cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 90%;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 5px black;
+            margin-bottom: 10px;
+        }
+        .quote-box {
+            font-size: 22px;
+            font-style: italic;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 90%;
+        }
+ 
+        /* Proposal Section */
+        .proposal {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .yes-btn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+        .yes-btn:hover {
+            background-color: #e63950;
+        }
+        .no-btn {
+            background-color: #222;
+            color: white;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+ 
+        /* Make the No button move */
+        .no-btn:hover {
+            position: absolute;
+            left: calc(10% + (80% * Math.random()));
+            top: calc(10% + (60% * Math.random()));
+        }
+ 
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color:  dark red;
+            font-size: 40px;
+            animation: float 5s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+ 
+        /* Responsive Design */
+        @media screen and (min-width: 768px) {
+            h1 {
+                font-size: 50px;
+            }
+            .quote-box {
+                font-size: 24px;
+            }
+        }
+ 
+        /* Hide the audio player */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="container">
+        <h1>Happy Valentine's Day, Yashika❤️</h1>
+        
+        <div class="quote-box" id="quote">
+            "Love is not about how many days, months, or years you have been together. It's about how much you love each other every day."
+        </div>
+ 
+        <!-- Background Music -->
+        <audio id="bgMusic" autoplay loop>
+            <source src="your-song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+ 
+        <!-- Proposal Section -->
+        <div class="proposal">Will you be my Valentine? ❤️</div>
+        <div class="buttons">
+            <button class="btn yes-btn" onclick="sayYes()">Yes please</button>
+            <button class="btn no-btn" id="noBtn">No chance</button>
+        </div>
+    </div>
+ 
+    <!-- Floating Hearts -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+ 
+            // Randomize position
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+ 
+            // Remove after animation ends
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+ 
+        setInterval(createHeart, 300); // New heart every 300ms
+ 
+        const quotes = [
+            "Love is not about how many days, months, or years you have been together. It's about how much you love each other every day.",
+            "You are my today and all of my tomorrows.",
+            "I love you not only for what you are, but for what I am when I am with you.",
+            "Every love story is beautiful, but ours is my favorite.",
+            "You are the reason my heart beats a little faster."
+        ];
+        
+        function changeQuote() {
+            let randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById("quote").innerText = quotes[randomIndex];
+        }
+ 
+        setInterval(changeQuote, 5000); // Change quote every 5 seconds
+ 
+        // Function for "Yes" button
+        function sayYes() {
+            alert("You are my dream come true, my answered prayer, and my forever Valentine. They say love is a journey, and I'm so blessed to walk this path with you. You make my world brighter, my heart fuller, and my life so much sweeter.
+ ❤️");
+        }
+ 
+        // Function to make the "No" button move away
+        const noButton = document.getElementById("noBtn");
+ 
+        noButton.addEventListener("mouseover", function () {
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+noButton.style.left = `${x}px`;
+noButton.style.top = `${y}px`;
+        });
+ 
+        // Ensure music starts playing (for mobile browsers)
+        document.addEventListener("click", function() {
+            document.getElementById("bgMusic").play();
+        });
+    </script>
+ 
+</body>
+</html>
