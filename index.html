@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            background-color: #ffccdc;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #d6336c;
+            text-shadow: 2px 2px #fff;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        .button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+        .no {
+            background-color: #ff1744;
+            color: white;
+            position: absolute;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh); }
+            100% { transform: translateY(-10vh); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine? 💖</h1>
+        <div class="buttons">
+            <button class="button yes" onclick="alert('Yay! 💘')">Yes</button>
+            <button class="button no" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+    
+    <script>
+        function moveButton() {
+            const button = document.querySelector('.no');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+        
+        function createBalloons() {
+            for (let i = 0; i < 20; i++) {
+                let balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                balloon.style.left = Math.random() * window.innerWidth + 'px';
+                balloon.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                document.body.appendChild(balloon);
+            }
+        }
+        createBalloons();
+    </script>
+</body>
+</html>
